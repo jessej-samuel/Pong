@@ -29,7 +29,7 @@ end
 
 function Ball:collide()
 	if _G.collision(self, Player) then
-		print('player collide')
+		Game_Speed = Game_Speed + Game_Difficulty
 		self.xVel = -self.xVel
 		self.x = Player.x + Player.width
 		if self.yVel == 0 then
@@ -38,7 +38,6 @@ function Ball:collide()
 	end
 
 	if _G.collision(self, Enemy) then
-		print('enemy collide')
 		love.graphics.setColor(1, 1, 0)
 		self.xVel = -self.xVel
 		self.x = Enemy.x - self.width
