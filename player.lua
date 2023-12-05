@@ -3,10 +3,16 @@ Player = {}
 function Player:load()
 	self.x = 50
 	self.y = love.graphics.getHeight() / 2
-	self.width = 20
-	self.height = 100
+	self.img = love.graphics.newImage('assets/blue_board.png')
+	self.width = self.img:getWidth()
+	self.height = self.img:getHeight()
 	self.speed = 500
 	self.type = 'player'
+	self.score = 0
+end
+
+function Player:addPoint()
+	self.score = self.score + 1
 end
 
 function Player:update(dt)
@@ -29,5 +35,5 @@ function Player:move(dt)
 end
 
 function Player:draw()
-	love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+	love.graphics.draw(self.img, self.x, self.y)
 end
